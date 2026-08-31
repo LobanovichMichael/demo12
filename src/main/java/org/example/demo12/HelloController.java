@@ -45,20 +45,30 @@ public class HelloController {
 
     private String isWin() {
         ArrayList<VBox> vBoxes = new ArrayList<>();
-        for (Node node : field.getChildren()) {
-            VBox vbox = (VBox)node;
-            vBoxes.add(vbox);
+        for (Node n : field.getChildren()) {
+            vBoxes.add((VBox)n);
         }
 
         for (VBox vbox : vBoxes) {
             ObservableList<Node> oneCol = vbox.getChildren(); // Получаем все кнопки
             if (
                     ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(1)).getText())
-                    && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
+                            && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
             ) {
                 return ((Button)oneCol.get(0)).getText();
             }
         }
+
+        for (int i = 0; i < vBoxes.size(); i++) {
+            if (
+                    ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(1).getChildren().get(i)).getText())
+                    && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(2).getChildren().get(i)).getText())
+            ) {
+                return ((Button)vBoxes.get(0).getChildren().get(i)).getText();
+            }
+        }
+
+
 
         return "";
     }
