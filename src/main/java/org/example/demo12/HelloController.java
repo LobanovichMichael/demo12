@@ -22,12 +22,15 @@ public class HelloController {
     @FXML
     protected Label winLabel;
 
+    int movesCounter = 0;
+
     @FXML
     protected void onButtonClick(ActionEvent event) {
         Button button = (Button)event.getSource();
         if (!button.getText().equals("")) {
             return;
         }
+        movesCounter++;
         String text;
         if (isCross) {
             text = "X";
@@ -38,6 +41,9 @@ public class HelloController {
         button.setText(text);
         if (!isWin().equals("")) {
             winLabel.setText("Игра окончена! Победили: " + isWin());
+            field.setDisable(true);
+        } else if (movesCounter == 9) {
+            winLabel.setText("Игра окончена! Ничья!");
             field.setDisable(true);
         }
     }
@@ -101,7 +107,7 @@ public class HelloController {
 
         if (isButtonsTextEquals((Button)vBoxes.get(2).getChildren().get(0),
                 (Button)vBoxes.get(1).getChildren().get(1),
-                (Button)vBoxes.get(2).getChildren().get(0)
+                (Button)vBoxes.get(0).getChildren().get(2)
         )) {
             return ((Button)vBoxes.get(2).getChildren().get(0)).getText();
         }
