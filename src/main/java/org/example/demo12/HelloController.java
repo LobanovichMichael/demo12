@@ -89,6 +89,14 @@ public class HelloController {
         }
 
 
+//        if (!((Button)vBoxes.get(2).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(2).getChildren().get(0)).getText()
+//                .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
+//
+//                ((Button)vBoxes.get(2).getChildren().get(0)).getText()
+//                        .equals(((Button)vBoxes.get(0).getChildren().get(2)).getText())) {
+//            return ((Button)vBoxes.get(2).getChildren().get(0)).getText();
+//        }
+
         if (isButtonsTextEquals((Button)vBoxes.get(2).getChildren().get(0),
                 (Button)vBoxes.get(1).getChildren().get(1),
                 (Button)vBoxes.get(2).getChildren().get(0)
