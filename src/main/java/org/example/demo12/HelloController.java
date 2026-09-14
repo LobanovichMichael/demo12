@@ -25,6 +25,32 @@ public class HelloController {
     int movesCounter = 0;
 
     @FXML
+    protected void restartGame() {
+        winLabel.setText("");
+        field.setDisable(false);
+        movesCounter = 0;
+
+        ArrayList<VBox> vBoxes = new ArrayList<>();
+        for (Node n : field.getChildren()) {
+            vBoxes.add((VBox)n);
+        }
+        for (VBox vbox : vBoxes) {
+            ObservableList<Node> oneCol = vbox.getChildren(); // Получаем все кнопки
+            ((Button)oneCol.get(0)).setText("");
+            ((Button)oneCol.get(1)).setText("");
+            ((Button)oneCol.get(2)).setText("");
+        }
+
+//        for (VBox vbox : vBoxes) {
+//            ObservableList<Node> oneCol = vbox.getChildren(); // Получаем все кнопки
+//            for (Node n : oneCol) {
+//                ((Button)n).setText("");
+//            }
+//        }
+
+    }
+
+    @FXML
     protected void onButtonClick(ActionEvent event) {
         Button button = (Button)event.getSource();
         if (!button.getText().equals("")) {
