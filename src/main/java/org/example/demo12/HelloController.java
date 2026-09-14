@@ -51,41 +51,57 @@ public class HelloController {
 
         for (VBox vbox : vBoxes) {
             ObservableList<Node> oneCol = vbox.getChildren(); // Получаем все кнопки
-            if (
-                    !((Button) oneCol.get(0)).getText().isEmpty() && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(1)).getText())
-                            && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
-            ) {
+//            if (
+//                    !((Button) oneCol.get(0)).getText().isEmpty() && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(1)).getText())
+//                            && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
+//
+//            ) {
+            if (isButtonsTextEquals((Button)oneCol.get(0), (Button)oneCol.get(1), (Button)oneCol.get(2))) {
                 return ((Button)oneCol.get(0)).getText();
             }
         }
 
         for (int i = 0; i < 3; i++) {
-            if (
-                    !((Button)vBoxes.get(0).getChildren().get(i)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(1).getChildren().get(i)).getText())
-                    && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(2).getChildren().get(i)).getText())
-            ) {
+//            if (
+//                    !((Button)vBoxes.get(0).getChildren().get(i)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(1).getChildren().get(i)).getText())
+//                    && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(2).getChildren().get(i)).getText())
+//            ) {
+//                return ((Button)vBoxes.get(0).getChildren().get(i)).getText();
+//            }
+
+            if (isButtonsTextEquals((Button)vBoxes.get(0).getChildren().get(i),
+                    (Button)vBoxes.get(1).getChildren().get(i), (Button)vBoxes.get(2).getChildren().get(i))) {
                 return ((Button)vBoxes.get(0).getChildren().get(i)).getText();
             }
         }
 
-        if ( !((Button)vBoxes.get(0).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(0)).getText()
-                .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
+//        if ( !((Button)vBoxes.get(0).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(0)).getText()
+//                .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
+//
+//                ((Button)vBoxes.get(0).getChildren().get(0)).getText()
+//                        .equals(((Button)vBoxes.get(2).getChildren().get(2)).getText())) {
+//            return ((Button)vBoxes.get(0).getChildren().get(0)).getText();
+//        }
 
-                ((Button)vBoxes.get(0).getChildren().get(0)).getText()
-                        .equals(((Button)vBoxes.get(2).getChildren().get(2)).getText())) {
+        if (isButtonsTextEquals((Button)vBoxes.get(0).getChildren().get(0),
+                (Button)vBoxes.get(1).getChildren().get(1), (Button)vBoxes.get(2).getChildren().get(2))) {
             return ((Button)vBoxes.get(0).getChildren().get(0)).getText();
         }
 
 
-        if (!((Button)vBoxes.get(2).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(2).getChildren().get(0)).getText()
-                .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
-
-                ((Button)vBoxes.get(2).getChildren().get(0)).getText()
-                        .equals(((Button)vBoxes.get(0).getChildren().get(2)).getText())) {
+        if (isButtonsTextEquals((Button)vBoxes.get(2).getChildren().get(0),
+                (Button)vBoxes.get(1).getChildren().get(1),
+                (Button)vBoxes.get(2).getChildren().get(0)
+        )) {
             return ((Button)vBoxes.get(2).getChildren().get(0)).getText();
         }
 
         return "";
+    }
+
+
+    private boolean isButtonsTextEquals(Button a, Button b, Button c) {
+        return a.getText().equals(b.getText()) && a.getText().equals(c.getText()) && !a.getText().isEmpty();
     }
 
 }
