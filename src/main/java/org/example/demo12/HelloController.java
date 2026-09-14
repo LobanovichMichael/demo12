@@ -52,7 +52,7 @@ public class HelloController {
         for (VBox vbox : vBoxes) {
             ObservableList<Node> oneCol = vbox.getChildren(); // Получаем все кнопки
             if (
-                    ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(1)).getText())
+                    !((Button) oneCol.get(0)).getText().isEmpty() && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(1)).getText())
                             && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
             ) {
                 return ((Button)oneCol.get(0)).getText();
@@ -61,19 +61,14 @@ public class HelloController {
 
         for (int i = 0; i < 3; i++) {
             if (
-                    ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(1).getChildren().get(i)).getText())
+                    !((Button)vBoxes.get(0).getChildren().get(i)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(1).getChildren().get(i)).getText())
                     && ((Button)vBoxes.get(0).getChildren().get(i)).getText().equals(((Button)vBoxes.get(2).getChildren().get(i)).getText())
             ) {
-                System.out.println("Найдена победа по горизонтали");
-                System.out.println(((Button)vBoxes.get(0).getChildren().get(i)).getText());
-                if (((Button)vBoxes.get(0).getChildren().get(i)).getText().equals("")) {
-                    System.out.println("Пустой ответ");
-                }
                 return ((Button)vBoxes.get(0).getChildren().get(i)).getText();
             }
         }
 
-        if (((Button)vBoxes.get(0).getChildren().get(0)).getText()
+        if ( !((Button)vBoxes.get(0).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(0).getChildren().get(0)).getText()
                 .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
 
                 ((Button)vBoxes.get(0).getChildren().get(0)).getText()
@@ -82,7 +77,7 @@ public class HelloController {
         }
 
 
-        if (((Button)vBoxes.get(2).getChildren().get(0)).getText()
+        if (!((Button)vBoxes.get(2).getChildren().get(0)).getText().isEmpty() && ((Button)vBoxes.get(2).getChildren().get(0)).getText()
                 .equals(((Button)vBoxes.get(1).getChildren().get(1)).getText()) &&
 
                 ((Button)vBoxes.get(2).getChildren().get(0)).getText()
