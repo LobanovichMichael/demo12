@@ -56,6 +56,8 @@ public class HelloController {
 //                            && ((Button)oneCol.get(0)).getText().equals(((Button)oneCol.get(2)).getText())
 //
 //            ) {
+//            return ((Button)oneCol.get(0)).getText();
+//        }
             if (isButtonsTextEquals((Button)oneCol.get(0), (Button)oneCol.get(1), (Button)oneCol.get(2))) {
                 return ((Button)oneCol.get(0)).getText();
             }
